@@ -1,0 +1,12 @@
+
+.flatpickr-calendar * {
+  font-family: 'Work Sans', 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+.flatpickr-monthDropdown-months {
+  font-family: 'Work Sans', 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+.flatpickr-current-month input.cur-year {
+  font-family: 'Work Sans', 'Roboto', Helvetica, Arial, sans-serif;
+}
