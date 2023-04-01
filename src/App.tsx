@@ -10,6 +10,8 @@ import { useGlobalContext } from "./global/store";
 const ViewContainer = lazy(() => import("./views/ViewContainer"));
 
 const Index = lazy(() => import("./views/Index"));
+const Features = lazy(() => import("./views/Features"));
+const NotFound = lazy(() => import("./views/NotFound"));
 
 export default function App() {
   const { loadLocalStorage, setIsMobile } = useGlobalContext();
@@ -39,6 +41,8 @@ export default function App() {
         <ViewContainer>
           <Routes>
             <Route path='/' component={Index} />
+            <Route path='/features' component={Features} />
+            <Route path='/*' component={NotFound} />
           </Routes>
         </ViewContainer>
       </div>

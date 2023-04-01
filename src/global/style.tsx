@@ -33,11 +33,8 @@ const palette = {
 const appbar = {
   backgroundColor: palette.grey[4],
   height: '80px',
-  // p: '5px',
   width: '100%',
   display: 'flex',
-  justifyContent: 'space-between',
-  zIndex: 9999,
 }
 
 const sidebar = {
