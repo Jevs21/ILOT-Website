@@ -1,1 +1,0 @@
-import{U as r,V as s,W as o,t as l}from"./index-6b2834f3.js";import{l as a}from"./ILOTLogo-cc687e16.js";const p=l("<img>",1),n=e=>(()=>{const t=p.cloneNode(!0);return r(t,"click",e.onClick,!0),s(t,"src",a),t.style.setProperty("display","block"),t.style.setProperty("margin-left","20px"),t.style.setProperty("height","80%"),t})();o(["click"]);export{n as default};

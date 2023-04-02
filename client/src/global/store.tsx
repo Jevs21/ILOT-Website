@@ -67,17 +67,17 @@ export function GlobalContextProvider(props) {
       url = `${server_url}/${endpoint}`;
     }
     
-    const u: LoggedUserData = JSON.parse(localStorage.getItem('user_data'));
+    // const u: LoggedUserData = JSON.parse(localStorage.getItem('user_data'));
   
-    const uuid  = (u && 'uuid' in u)  ? u.uuid  : "null";
-    const token = (u && 'token' in u) ? u.token : "null";
+    // const uuid  = (u && 'uuid' in u)  ? u.uuid  : "null";
+    // const token = (u && 'token' in u) ? u.token : "null";
   
     const d = {
       method: method,
       headers: {
         'content-type': 'application/json;charset=UTF-8',
-        'Authorization': token,
-        'uuid': uuid
+        // 'Authorization': token,
+        // 'uuid': uuid
       },
     }
   
@@ -97,8 +97,8 @@ export function GlobalContextProvider(props) {
         if (!response.ok) {
           // Add new token to localstorage?
           if (response.status == 401) { // Unauthorized
-            clearStore();
-            navigate('/login');
+            // clearStore();
+            // navigate('/login');
             return response.json();
           }
         }

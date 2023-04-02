@@ -1,4 +1,4 @@
-import { A, Navigate } from "@solidjs/router";
+import { A } from "@solidjs/router";
 import { Close, Menu } from "@suid/icons-material";
 import { Box, Divider, Drawer, IconButton, Stack, Typography } from "@suid/material";
 import { createMemo, createSignal, For, lazy, Show } from "solid-js";

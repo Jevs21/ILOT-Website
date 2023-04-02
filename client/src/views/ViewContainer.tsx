@@ -5,9 +5,9 @@ import style from "../global/style";
 const ViewContainer = (props) => {
   return (
     <Grid container>
-      <Grid item xs={12}>
+      {/* <Grid item xs={12}>
         <AppBar/>
-      </Grid>
+      </Grid> */}
 
       <Grid item container xs={12} paddingTop={style.appbar.height}>
         {props.children}

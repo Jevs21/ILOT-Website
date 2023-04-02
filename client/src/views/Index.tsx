@@ -1,8 +1,9 @@
 import { Grid, Stack, Typography } from "@suid/material";
 import StackRowCentered from "../elements/StackRowCentered";
-import { createEffect, lazy } from "solid-js";
+import { createEffect, createResource, lazy } from "solid-js";
+// import LogoLarge from "../elements/Logo/LogoLarge";
+import { useGlobalContext } from "../global/store";
 const LogoLarge = lazy(() => import("../elements/Logo/LogoLarge"));
-
 // const Index = () => {
 //   return (
 //     <>
@@ -23,28 +24,23 @@ const LogoLarge = lazy(() => import("../elements/Logo/LogoLarge"));
 //   );
 // };
 
-import { createGraphQLClient, gql } from "@solid-primitives/graphql";
+// import { createGraphQLClient, gql } from "@solid-primitives/graphql";
+// import { useGlobalContext } from "../global/store";
 
 
 
-const Index = () => {
-  const newQuery = createGraphQLClient("http://localhost:8080/graphql");
-  // const [data, { refetch }] = newQuery(
-  //   gql`
-  //     query {
-  //       posts {
-  //         nodes {
-  //           id
-  //           post_title
-  //         }
-  //       }
-  //     }
-  //   `,
-  //   { path: "home" },
-  // );
-  createEffect(() => {
-    console.log(newQuery);
-  });
+const Index = (props) => {
+  const {apiCall} = useGlobalContext();
+  // const fetchTest = async () => ( await apiCall("/wp-json/wp/v2/posts") )
+  // const [data] = createResource(fetchTest);
+
+  // createEffect(() => {
+  //   if (data.loading) {
+  //     console.log("loading");
+  //   } else {
+  //     console.log(data());
+  //   }
+  // });
 
   return (
     <>

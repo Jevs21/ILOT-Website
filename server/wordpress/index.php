@@ -14,7 +14,7 @@
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script> -->
     <title>ILOT Application</title>
-    <script type="module" crossorigin src="/assets/index-6b2834f3.js"></script>
+    <script type="module" crossorigin src="/assets/index-3ec09f37.js"></script>
     <link rel="stylesheet" href="/assets/index-785f7f4b.css">
   </head>
 

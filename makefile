@@ -1,4 +1,6 @@
-run: clean build
+all: clean build run
+
+run:
 	cd server/wordpress && php -S localhost:8080
 
 build:
