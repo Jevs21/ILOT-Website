@@ -1,6 +1,6 @@
-import { Grid, Stack, Typography } from "@suid/material";
+import { Box, Button, Grid, Stack, Typography } from "@suid/material";
 import StackRowCentered from "../elements/StackRowCentered";
-import { createEffect, createResource, lazy } from "solid-js";
+import { For, Show, createEffect, createMemo, createResource, createSignal, lazy, onCleanup } from "solid-js";
 // import LogoLarge from "../elements/Logo/LogoLarge";
 import { useGlobalContext } from "../global/store";
 import TestSVG from "../assets/TestSVG";
@@ -9,67 +9,128 @@ const LogoLarge = lazy(() => import("../elements/Logo/LogoLarge"));
 // const TestImage = import("../assets/TestImage.svg");
 // import TestImage 
 
-const Index = (props) => {
-  const {apiCall} = useGlobalContext();
-  // const fetchTest = async () => ( await apiCall("/wp-json/wp/v2/posts") )
-  // const [data] = createResource(fetchTest);
+function getRandomLightColorHex() {
+  function randomLightHex() {
+    const min = 128;
+    const max = 255;
+    return Math.floor(Math.random() * (max - min + 1) + min).toString(16).padStart(2, '0');
+  }
 
-  // createEffect(() => {
-  //   if (data.loading) {
-  //     console.log("loading");
-  //   } else {
-  //     console.log(data());
-  //   }
-  // });
+  const r = randomLightHex();
+  const g = randomLightHex();
+  const b = randomLightHex();
+
+  return `#${r}${g}${b}`;
+}
+
+const IndexMobile = (props) => {
+  return (
+    <>
+      <Grid item lg={1}></Grid>
+      <Grid item container xs={12} lg={6}>
+        <Typography variant="h1" paddingY={8}>
+          Ditch the sticky notes and messy spreadsheets.
+        </Typography>
+        <Typography variant="h5">
+          Easily track your dealership's inventory so you can accelerate sales.
+        </Typography>
+      </Grid>
+
+      <Grid item container xs={12} lg={5}>
+          <StackRowCentered>
+            <TestSVG width={486} height={380}/>
+          </StackRowCentered>
+      </Grid>
+    </>
+  );
+}
+
+const IndexDesktop = (props) => {
+  const leftPos = createMemo(() => {
+    let left = 100;
+    if (props.scrollPos) {
+      left = left + (props.scrollPos * 0.05);
+    }
+    return `${left}%`
+  })
+  const transform = createMemo(() => {
+    let t = 'translate(-50%, -50%) ';
+    if (props.scrollPos) {
+      t += `rotate(${props.scrollPos * 0.05}deg)`;
+    }
+    return t;
+  })
 
   return (
     <>
-      <Grid item xs={1}></Grid>
-      <Grid item container xs={10}>
-        {/* <StackRowCentered 
-          height={"100vh"}
-          justifyContent="center">
-            <Stack spacing={2}>
-              <LogoLarge/>
-              <Typography paddingTop={4} align="center" fontSize={"1.2em"}>ILOT Software is under construction.</Typography>
-              <Typography paddingTop={1} align="center" fontWeight={600} fontSize={"1.3em"}>Coming April 2023</Typography>
-            </Stack>
-        </StackRowCentered> */}
-        <Grid 
-          backgroundColor="#AA22FF" 
-          item container 
-          xs={11}
-          justifyContent="center"
-          py={8}>
-          <Stack>
-            <Typography variant="h1" paddingY={8}>
+      <Box 
+        height="70vh" width="70vw" 
+        // backgroundColor={getRandomLightColorHex()}
+        >
+        <StackRowCentered height="100%" paddingLeft={8}>
+          <Stack spacing={10}>
+            <Typography variant="h1" fontSize={"4.3em"} lineHeight={1.3}>
               Ditch the sticky notes and messy spreadsheets.
             </Typography>
             <Typography variant="h5">
               Easily track your dealership's inventory so you can accelerate sales.
             </Typography>
+            <StackRowCentered justifyContent="center">
+              <Button color="primary">Features</Button>
+              <Button color="primary">Pricing</Button>
+            </StackRowCentered>
           </Stack>
-        </Grid>
-        <Grid item xs={1}></Grid>
+        </StackRowCentered>
+      </Box>
 
-        <Grid item xs={7}></Grid>
-        <Grid 
-          backgroundColor="#AA2211" 
-          item container 
-          xs={5} 
-          justifyContent="center">
-          {/* <LogoLarge/> */}
-          <StackRowCentered>
-          <TestSVG width={620} height={482}/>
-          {/* <TestSVG width={310} height={241}/> */}
-
-          </StackRowCentered>
-          {/* {() => TestImage} */}
-          {/* <img src={TestImage} alt="test image" /> */}
-        </Grid>
-      </Grid>
-      <Grid item xs={1}></Grid>
+      <TestSVG 
+        id={'desktop-full-mockup'} 
+        // width={900} height={703}
+        width="85%" height="85%"
+        style={{
+          position: 'absolute',
+          top: '45%',
+          left: leftPos(),
+          transform: transform(),
+          zIndex: 1,
+        }}/>
     </>
+  );
+}
+
+const Index = (props) => {
+  const {isMobile, apiCall} = useGlobalContext();
+  
+  // Scroll position tracking
+  const [scrollPosition, setScrollPosition] = createSignal(0);
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+
+  createEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    onCleanup(() => {
+      window.removeEventListener('scroll', handleScroll);
+    });
+  });
+
+  return (
+    <>
+      <Show 
+        when={isMobile()}
+        fallback={<IndexDesktop scrollPos={scrollPosition()}/>}>
+        <IndexMobile/>
+      </Show>
+      
+      <For each={[1,2,3,4,5,6,7,8,9,10]}>{(item) => (
+        <Grid item xs={12} backgroundColor={getRandomLightColorHex()}>
+          <Typography variant="h1">Test {item}</Typography>
+        </Grid>
+      )}</For>
+
+
+    </>      
+
   );
 };
 

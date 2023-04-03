@@ -6,7 +6,9 @@ const LogoAppbar = (props) => {
       "display": "block",
       // "max-width": '365px', 
       // "max-height": '100%', 
-      "margin-left": "20px",
+      // "margin-left": "20px",
+      'margin-left': "65px",
+      'margin-right': "20px",
       height: '80%',
       // height: 'auto',
     }}/>
