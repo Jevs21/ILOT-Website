@@ -6,7 +6,19 @@ const LogoLarge = lazy(() => import("../elements/Logo/LogoLarge"));
 const Index = () => {
   return (
     <>
-      <Grid item xs={1} sm={3} md={4}></Grid>
+      <Grid item container xs={12}>
+        <Grid item xs={1}></Grid>
+        <Grid item container xs={10} backgroundColor="#FF0044">
+          <StackRowCentered height={"12vh"}>
+              {/* <Typography paddingTop={4} align="center" fontSize={"1.2em"}>FEATURES</Typography> */}
+              <Typography variant="h1" fontSize={"4.3em"} lineHeight={1.3}>
+                Features
+              </Typography>
+          </StackRowCentered>
+        </Grid>
+        <Grid item xs={1}></Grid>
+      </Grid>
+      {/* <Grid item xs={1} sm={3} md={4}></Grid>
       <Grid item container xs={10} sm={6} md={4}>
         <StackRowCentered 
           height={"100vh"}
@@ -18,7 +30,7 @@ const Index = () => {
             </Stack>
         </StackRowCentered>
       </Grid>
-      <Grid item xs={1} sm={3} md={4}></Grid>
+      <Grid item xs={1} sm={3} md={4}></Grid> */}
     </>
   );
 };

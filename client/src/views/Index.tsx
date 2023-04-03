@@ -23,6 +23,12 @@ function getRandomLightColorHex() {
   return `#${r}${g}${b}`;
 }
 
+const TextDisplay = (props) => (
+  <Typography {...props} variant="h1" fontSize={"4.3em"} lineHeight={1.3}>
+    {props.children}
+  </Typography>
+)
+
 const IndexMobile = (props) => {
   return (
     <>
@@ -47,16 +53,16 @@ const IndexMobile = (props) => {
 
 const IndexDesktop = (props) => {
   const leftPos = createMemo(() => {
-    let left = 100;
+    let left = 90;
     if (props.scrollPos) {
-      left = left + (props.scrollPos * 0.05);
+      left = left + (props.scrollPos * 0.03);
     }
     return `${left}%`
   })
   const transform = createMemo(() => {
     let t = 'translate(-50%, -50%) ';
     if (props.scrollPos) {
-      t += `rotate(${props.scrollPos * 0.05}deg)`;
+      t += `rotate(${props.scrollPos * 0.04}deg)`;
     }
     return t;
   })
@@ -69,9 +75,9 @@ const IndexDesktop = (props) => {
         >
         <StackRowCentered height="100%" paddingLeft={8}>
           <Stack spacing={10}>
-            <Typography variant="h1" fontSize={"4.3em"} lineHeight={1.3}>
+            <TextDisplay>
               Ditch the sticky notes and messy spreadsheets.
-            </Typography>
+            </TextDisplay>
             <Typography variant="h5">
               Easily track your dealership's inventory so you can accelerate sales.
             </Typography>
@@ -94,6 +100,10 @@ const IndexDesktop = (props) => {
           transform: transform(),
           zIndex: 1,
         }}/>
+
+      <Grid item xs={12} p={8} backgroundColor={getRandomLightColorHex()}>
+        <TextDisplay>Streamline your processes, save time, and sell vehicles faster with the help of our platform.</TextDisplay>
+      </Grid>
     </>
   );
 }
@@ -122,8 +132,9 @@ const Index = (props) => {
         <IndexMobile/>
       </Show>
       
+      
       <For each={[1,2,3,4,5,6,7,8,9,10]}>{(item) => (
-        <Grid item xs={12} backgroundColor={getRandomLightColorHex()}>
+        <Grid item xs={12} paddingY={2} backgroundColor={getRandomLightColorHex()}>
           <Typography variant="h1">Test {item}</Typography>
         </Grid>
       )}</For>
