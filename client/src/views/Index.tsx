@@ -4,24 +4,16 @@ import { For, Show, createEffect, createMemo, createResource, createSignal, lazy
 // import LogoLarge from "../elements/Logo/LogoLarge";
 import { useGlobalContext } from "../global/store";
 import TestSVG from "../assets/TestSVG";
+import { getRandomColorHex } from "../global/helpers";
 const LogoLarge = lazy(() => import("../elements/Logo/LogoLarge"));
+const ExtensionIcon = lazy(() => import("@suid/icons-material/Extension"));
+const PaymentIcon = lazy(() => import("@suid/icons-material/Payments"));
+const CarImage = lazy(() => import("../assets/CarImg"));
 // const TestImage = lazy(() => import("../assets/TestImage.svg"));
 // const TestImage = import("../assets/TestImage.svg");
 // import TestImage 
 
-function getRandomLightColorHex() {
-  function randomLightHex() {
-    const min = 128;
-    const max = 255;
-    return Math.floor(Math.random() * (max - min + 1) + min).toString(16).padStart(2, '0');
-  }
 
-  const r = randomLightHex();
-  const g = randomLightHex();
-  const b = randomLightHex();
-
-  return `#${r}${g}${b}`;
-}
 
 const TextDisplay = (props) => (
   <Typography {...props} variant="h1" fontSize={"4.3em"} lineHeight={1.3}>
@@ -81,9 +73,17 @@ const IndexDesktop = (props) => {
             <Typography variant="h5">
               Easily track your dealership's inventory so you can accelerate sales.
             </Typography>
-            <StackRowCentered justifyContent="center">
-              <Button color="primary">Features</Button>
-              <Button color="primary">Pricing</Button>
+            <StackRowCentered justifyContent="center" width="80%">
+              <Button 
+                variant="contained" 
+                color="primary" 
+                startIcon={<ExtensionIcon/>}
+                sx={{width: '20%', fontSize: "large"}}>Features</Button>
+              <Button 
+                variant="contained" 
+                color="primary" 
+                startIcon={<PaymentIcon/>}
+                sx={{width: '20%', fontSize: "large"}}>Pricing</Button>
             </StackRowCentered>
           </Stack>
         </StackRowCentered>
@@ -101,8 +101,13 @@ const IndexDesktop = (props) => {
           zIndex: 1,
         }}/>
 
-      <Grid item xs={12} p={8} backgroundColor={getRandomLightColorHex()}>
+      
+      <Grid item xs={12} p={8} paddingBottom={0}>
         <TextDisplay>Streamline your processes, save time, and sell vehicles faster with the help of our platform.</TextDisplay>
+      </Grid>
+      
+      <Grid item xs={12} paddingBottom={8} position="relative">
+        <CarImage scrollPos={props.scrollPos}/>
       </Grid>
     </>
   );
@@ -115,6 +120,7 @@ const Index = (props) => {
   const [scrollPosition, setScrollPosition] = createSignal(0);
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
+    console.log("Scroll pos: ", scrollPosition())
   };
 
   createEffect(() => {
@@ -134,7 +140,7 @@ const Index = (props) => {
       
       
       <For each={[1,2,3,4,5,6,7,8,9,10]}>{(item) => (
-        <Grid item xs={12} paddingY={2} backgroundColor={getRandomLightColorHex()}>
+        <Grid item xs={12} paddingY={2} backgroundColor={getRandomColorHex()}>
           <Typography variant="h1">Test {item}</Typography>
         </Grid>
       )}</For>

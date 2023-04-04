@@ -1,23 +1,13 @@
-
-import { Grid, Stack, Typography } from "@suid/material";
-import LogoLarge from "../elements/Logo/LogoLarge";
-import StackRowCentered from "../elements/StackRowCentered";
+import SectionHeaderEl from "../elements/SectionHeaderEl";
+import HeaderEl from "../elements/HeaderEl";
+import { lazy } from "solid-js";
+const AboutIcon = lazy(() => import("@suid/icons-material/People"));
 
 const About = () => {
   return (
     <>
-      <Grid item xs={1} sm={3} md={4}></Grid>
-      <Grid item container xs={10} sm={6} md={4}>
-        <StackRowCentered 
-          height={"100vh"}
-          justifyContent="center">
-            <Stack spacing={2}>
-              <LogoLarge/>
-              <Typography paddingY={3} align="center" fontWeight={600} fontSize={"1.3em"}>ABOUT</Typography>
-            </Stack>
-        </StackRowCentered>
-      </Grid>
-      <Grid item xs={1} sm={3} md={4}></Grid>
+      <HeaderEl icon={AboutIcon}>About Us</HeaderEl>
+      <SectionHeaderEl>Placeholder</SectionHeaderEl>
     </>
   );
 };

@@ -44,4 +44,18 @@ const getStringFromTimeDiff = (diff) => {
   return `${dayDiff} day${(dayDiff == 1) ? "":"s"}`
 }
 
-export {formatTextStr, formatDateStr, formatDateStrShort, formatText, getStringFromTimeDiff};
+function getRandomColorHex() {
+  function randomLightHex() {
+    const min = 128;
+    const max = 255;
+    return Math.floor(Math.random() * (max - min + 1) + min).toString(16).padStart(2, '0');
+  }
+
+  const r = randomLightHex();
+  const g = randomLightHex();
+  const b = randomLightHex();
+
+  return `#${r}${g}${b}`;
+}
+
+export {formatTextStr, formatDateStr, formatDateStrShort, formatText, getStringFromTimeDiff, getRandomColorHex};
