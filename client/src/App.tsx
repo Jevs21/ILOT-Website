@@ -15,7 +15,7 @@ import { useGlobalContext } from "./global/store";
 const Index = lazy(() => import("./views/Index"));
 const Features = lazy(() => import("./views/Features"));
 const Pricing = lazy(() => import("./views/Pricing"));
-const About = lazy(() => import("./views/About"));
+const Contact = lazy(() => import("./views/Contact"));
 const NotFound = lazy(() => import("./views/NotFound"));
 
 export default function App() {
@@ -48,7 +48,7 @@ export default function App() {
             <Route path="/" component={Index} />
             <Route path='/features' component={Features} />
             <Route path='/pricing' component={Pricing} />
-            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
             <Route path='/*' component={NotFound} />
           </Routes>
         </ViewContainer>

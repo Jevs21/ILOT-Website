@@ -52,11 +52,11 @@ const navbar_options = [
     href: "/pricing",
     flexGrow: 0,
   },{ 
-    text: "About Us",
+    text: "Contact",
     icon: () => <PeopleIcon fontSize="small" class="sidebar_item_text" sx={icon_style_light}/>,
     mobile_icon: () => <PeopleIcon class="sidebar_item_text" sx={icon_style_dark}/>,
     color: style.palette.black,
-    href: "/about",
+    href: "/contact",
     flexGrow: 1,
   }
 ];
