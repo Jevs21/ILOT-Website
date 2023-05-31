@@ -1,7 +1,7 @@
 all: clean build run
 
 run:
-	cd server && php -S 10.0.0.154:8080 -t public
+	cd server && php -S 10.0.0.110:8080 -t public
 
 build:
 	cd client && npm run build
@@ -11,7 +11,7 @@ build:
 all_wp: clean build_wp run_wp
 
 run_wp:
-	cd server_wp/wordpress && php -S 10.0.0.154:8080
+	cd server_wp/wordpress && php -S 10.0.0.110:8080
 
 build_wp:
 	cd client && npm run build

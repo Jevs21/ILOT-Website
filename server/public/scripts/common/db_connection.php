@@ -1,9 +1,9 @@
 <?php
-$db_info = file('../../dbInfo.txt', FILE_IGNORE_NEW_LINES);
+$db_file = '../../db.sqlite3';
 
-$conn = mysqli_connect($db_info[0], $db_info[1], $db_info[2], $db_info[3]);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+$conn = new SQLite3($db_file);
+
+if (!$conn) {
+  die("Connection failed: " . $conn->lastErrorMsg());
 }
 ?>

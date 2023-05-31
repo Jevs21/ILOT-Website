@@ -1,5 +1,7 @@
 dbInfo.txt
 server/public/assets
 server/public/index.php
-
+send_email.php
 .DS_Store
+vendor
+db.sqlite3
