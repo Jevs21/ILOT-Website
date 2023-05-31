@@ -1,3 +1,5 @@
 dbInfo.txt
 server/public/assets
 server/public/index.php
+
+.DS_Store
