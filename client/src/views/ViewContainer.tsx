@@ -2,6 +2,7 @@ import { Grid } from "@suid/material";
 import AppBar from "../elements/Navbar/AppBar";
 import style from "../global/style";
 import RouteFooter from "../elements/Navbar/RouteFooter";
+import HeaderEl from "../elements/RouteHeader";
 
 const ViewContainer = (props) => {
   return (
@@ -11,6 +12,8 @@ const ViewContainer = (props) => {
       </Grid>
 
       <Grid item container xs={12} paddingTop={style.appbar.height}>
+        <HeaderEl />
+        
         {props.children}
 
         <RouteFooter/>

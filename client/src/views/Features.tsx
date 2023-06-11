@@ -1,16 +1,10 @@
-import { Divider, Grid, Stack, Typography } from "@suid/material";
+import { Grid, Typography } from "@suid/material";
 import StackRowCentered from "../elements/StackRowCentered";
-import { createSignal, lazy } from "solid-js";
-import { getRandomColorHex } from "../global/helpers";
+import { createSignal } from "solid-js";
 import DemoStatusTrackerEl from "../elements/DemoStatusTrackerEl";
-import style from "../global/style";
 import DemoTaskListEl from "../elements/DemoTaskListEl";
 import DemoMapEl from "../elements/DemoMapEl";
 import SectionHeaderEl from "../elements/SectionHeaderEl";
-import HeaderEl from "../elements/HeaderEl";
-const LogoLarge = lazy(() => import("../elements/Logo/LogoLarge"));
-const ExtensionIcon = lazy(() => import("@suid/icons-material/Extension"));
-
 
 
 const SectionText = (props) => (
@@ -28,8 +22,6 @@ const Features = () => {
   const [sKeys, setSKeys] = createSignal(["Arrival", "Prep", "Media", "Website", "Sold", "Delivered"]);
   return (
     <>
-      <HeaderEl icon={ExtensionIcon}>Features</HeaderEl>
-
       <SectionHeaderEl>Status Tracker</SectionHeaderEl>
 
       <Grid item container xs={12}>

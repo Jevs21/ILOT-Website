@@ -6,60 +6,11 @@ import logo from "../../assets/ILOTLogo.png";
 import StackRowCentered from "../../elements/StackRowCentered";
 import { useGlobalContext } from "../../global/store";
 import style from "../../global/style";
-// import navbar_options from "./navbar_options";
+// import NavigationOptions from "./NavigationOptions";
 // const logo = lazy(() => import("../../assets/ILOTLogo.png"));
+import NavigationOptions from "./NavigationOptions";
+
 const LogoAppbar = lazy(() => import("../../elements/Logo/LogoAppbar"));
-const HomeIcon = lazy(() => import("@suid/icons-material/Home"));
-const ExtensionIcon = lazy(() => import("@suid/icons-material/Extension"));
-const PaymentIcon = lazy(() => import("@suid/icons-material/Payments"));
-const PeopleIcon = lazy(() => import("@suid/icons-material/People"));
-
-
-const icon_style_light = {
-  color: style.palette.white,
-  '&:hover': {
-    color: style.palette.accent,
-  }
-}
-const icon_style_dark = {
-  paddingLeft: 3,
-  color: style.palette.black,
-  '&:hover': {
-    color: style.palette.accent,
-  }
-}
-
-const navbar_options = [
-  { 
-    text: "Home",
-    icon: () => <HomeIcon fontSize="small" class="sidebar_item_text" sx={icon_style_light}/>,
-    mobile_icon: () => <HomeIcon class="sidebar_item_text" sx={icon_style_dark}/>,
-    color: style.palette.black,
-    href: "/",
-    flexGrow: 0,
-  },{ 
-    text: "Features",
-    icon: () => <ExtensionIcon fontSize="small" class="sidebar_item_text" sx={icon_style_light}/>,
-    mobile_icon: () => <ExtensionIcon class="sidebar_item_text" sx={icon_style_dark}/>,
-    color: style.palette.black,
-    href: "/features",
-    flexGrow: 0,
-  },{ 
-    text: "Pricing",
-    icon: () => <PaymentIcon fontSize="small" class="sidebar_item_text" sx={icon_style_light}/>,
-    mobile_icon: () => <PaymentIcon class="sidebar_item_text" sx={icon_style_dark}/>,
-    color: style.palette.black,
-    href: "/pricing",
-    flexGrow: 0,
-  },{ 
-    text: "Contact",
-    icon: () => <PeopleIcon fontSize="small" class="sidebar_item_text" sx={icon_style_light}/>,
-    mobile_icon: () => <PeopleIcon class="sidebar_item_text" sx={icon_style_dark}/>,
-    color: style.palette.black,
-    href: "/contact",
-    flexGrow: 1,
-  }
-];
 
 const AppBarDesktop = (props) => {
   const { navigate } = useGlobalContext();
@@ -72,7 +23,7 @@ const AppBarDesktop = (props) => {
     <>
       <LogoAppbar onClick={() => navigate('/')}/>
       <StackRowCentered width="100%" paddingX={2}>
-        <For each={navbar_options}>{(item) => (
+        <For each={NavigationOptions}>{(item) => (
           <A href={item.href}>
             <StackRowCentered>
               {item.icon()}
@@ -134,7 +85,7 @@ const AppBarMobileDrawer = (props) => {
 
         <Divider/>
 
-        <For each={navbar_options}>{(item) =>
+        <For each={NavigationOptions}>{(item) =>
           <MobileDrawerOption item={item}/>
         }</For>
       </Stack>

@@ -4,7 +4,7 @@ import "./style/App.module.css"
 
 import { Routes, Route } from '@solidjs/router';
 
-import { createEffect, lazy, onMount } from "solid-js";
+import { For, createEffect, createSignal, lazy, onMount } from "solid-js";
 import ViewContainer from "./views/ViewContainer";
 import { useGlobalContext } from "./global/store";
 // import { useGlobalContext } from "./global/store";
@@ -14,7 +14,9 @@ import { useGlobalContext } from "./global/store";
 // const ViewContainer = lazy(() => import("./views/ViewContainer"));
 const Index = lazy(() => import("./views/Index"));
 const Features = lazy(() => import("./views/Features"));
-const Pricing = lazy(() => import("./views/Pricing"));
+// const Pricing = lazy(() => import("./views/Pricing"));
+const Blog = lazy(() => import("./views/Blog"));
+const BlogPost = lazy(() => import("./views/BlogPost"));
 const Contact = lazy(() => import("./views/Contact"));
 const NotFound = lazy(() => import("./views/NotFound"));
 
@@ -39,7 +41,8 @@ export default function App() {
     // loadLocalStorage();
     console.log("Mounted")
     PageResize();
-  })
+  });
+  
   return (
     <ThemeProvider theme={mainTheme}>
       <div class="App">
@@ -47,7 +50,9 @@ export default function App() {
           <Routes>
             <Route path="/" component={Index} />
             <Route path='/features' component={Features} />
-            <Route path='/pricing' component={Pricing} />
+            {/* <Route path='/pricing' component={Pricing} /> */}
+            <Route path='/blog' component={Blog} />
+            <Route path='/blog/:slug' component={BlogPost} />
             <Route path='/contact' component={Contact} />
             <Route path='/*' component={NotFound} />
           </Routes>

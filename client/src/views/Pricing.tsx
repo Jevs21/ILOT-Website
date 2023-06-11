@@ -1,5 +1,5 @@
 
-import HeaderEl from "../elements/HeaderEl";
+import HeaderEl from "../elements/RouteHeader";
 import SectionHeaderEl from "../elements/SectionHeaderEl";
 import { lazy } from "solid-js";
 const PaymentIcon = lazy(() => import("@suid/icons-material/Payments"));

@@ -1,17 +1,18 @@
 all: clean build run
 
 run:
-	cd server && php -S 10.0.0.110:8080 -t public
+	cd server && php -S localhost:8080 -t public
 
 build:
 	cd client && npm run build
 	cp -r client/dist/assets/ server/public/assets
 	cp client/dist/index.html server/public/index.php
+	cp client/src/assets/*.jpeg server/public/assets
 
 all_wp: clean build_wp run_wp
 
 run_wp:
-	cd server_wp/wordpress && php -S 10.0.0.110:8080
+	cd server_wp/wordpress && php -S localhost:8080
 
 build_wp:
 	cd client && npm run build
