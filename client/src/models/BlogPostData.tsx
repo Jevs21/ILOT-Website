@@ -2,11 +2,11 @@ interface BlogPostData {
   id: number;
   title: string;
   content: string;
-  content_snippet: string;
   slug: string;
-  date: string;
+  created: string;
   updated: string;
   thumbnail_url: string;
+  image_urls: string;
 }
 
 export default BlogPostData;

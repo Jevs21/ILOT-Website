@@ -1,27 +1,27 @@
 import { useParams } from "@solidjs/router";
 import BlogPostData from "../models/BlogPostData";
-import { onMount } from "solid-js";
-import { Button, Grid, Stack, Typography } from "@suid/material";
+import { createSignal, onMount } from "solid-js";
+import { Button, CircularProgress, Grid, Stack, Typography } from "@suid/material";
 import { ChevronLeft } from "@suid/icons-material";
+import StackRowCentered from "../elements/StackRowCentered";
 
 const BlogPost = () => {
+  const [postData, setPostData] = createSignal<BlogPostData | null>(null);
   // get slug from url
-  onMount(() => {
+  onMount(async () => {
     const params = useParams();
-    console.log("Params")
-    console.log(params.slug);
+    const encodedSlug = encodeURIComponent(params.slug);
+    const response = await fetch(`../scripts/getBlogPost.php?slug=${encodedSlug}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const resp = await response.json();
+    if(resp.success) {
+      setPostData(resp.data);
+    }
   });
-
-  const post: BlogPostData = {
-    id: 1,
-    title: "Blog Post 1",
-    content: "This is the content of blog post 1",
-    content_snippet: "This is the content of blog post 1",
-    slug: "blog-post-1",
-    date: "2021-01-01",
-    updated: "2021-01-01",
-    thumbnail_url: "https://via.placeholder.com/150"
-  };
 
   return (
     <>
@@ -32,10 +32,18 @@ const BlogPost = () => {
             <Button variant="outlined" href="/blog" startIcon={<ChevronLeft/>}>Back</Button>
           </Grid>
           <Grid item xs={12} py={2} paddingBottom={6}>
-            <Typography variant="h1" gutterBottom >{post.title}</Typography>
+            <Typography variant="h1" gutterBottom >{postData() != null ? postData().title : "Loading..."}</Typography>
           </Grid>
-          <Stack>
-            <Typography variant="body1" gutterBottom>{post.content}</Typography>
+          <Stack spacing={2}>
+            {postData() != null ? (
+              <div innerHTML={postData().content}></div>
+            ) : (
+              <StackRowCentered height="100%" justifyContent="center">
+                <CircularProgress/>
+              </StackRowCentered>
+            )}
+            {/* { post.content } */}
+            {/* <Typography variant="body1" gutterBottom>{post.content}</Typography> */}
           </Stack>
         </Grid>
         <Grid item xs={1} md={2} ></Grid>

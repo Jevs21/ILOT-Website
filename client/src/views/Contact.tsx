@@ -25,10 +25,8 @@ const Contact = () => {
     setHasSubmitted(true);
     e.preventDefault();
     
-    const localUrl = "http://10.0.0.110:8080/scripts/submitContact.php";
-    const prodUrl = "https://your-wordpress-site.com/wp-json/contact-form/v1/submit";
     const data = formData();
-    fetch(localUrl, {
+    fetch('./scripts/submitContact.php', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

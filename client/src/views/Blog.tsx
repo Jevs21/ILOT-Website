@@ -9,7 +9,7 @@ const Blog = () => {
     <>
       <Grid item container>
         <Grid item xs={1} md={2} ></Grid>
-        <Grid container item xs={10} md={8} >
+        <Grid container item xs={10} md={8} justifyContent="center" alignItems="center">
           <BlogList />
         </Grid>
         <Grid item xs={1} md={2} ></Grid>

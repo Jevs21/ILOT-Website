@@ -13,7 +13,7 @@ const CarImage = lazy(() => import("../assets/CarImg"));
 // const TestImage = import("../assets/TestImage.svg");
 // import TestImage 
 
-
+const Contact = lazy(() => import("./Contact"));
 
 const TextDisplay = (props) => (
   <Typography {...props} variant="h1" fontSize={"4.3em"} lineHeight={1.3}>
@@ -144,6 +144,8 @@ const Index = (props) => {
           <Typography variant="h1">Test {item}</Typography>
         </Grid>
       )}</For>
+
+      <Contact/>
 
 
     </>      

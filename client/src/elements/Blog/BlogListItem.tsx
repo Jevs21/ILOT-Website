@@ -3,7 +3,7 @@ import BlogPostData from "../../models/BlogPostData";
 import { useNavigate } from "@solidjs/router";
 
 const BlogListItem = (props) => {
-  const post: BlogPostData = props.post;
+  const post: any = props.post;
   const navigate = useNavigate();
   return (
     <Card
@@ -34,16 +34,16 @@ const BlogListItem = (props) => {
 
         <Stack sx={{
           position: 'absolute',
-          width: "90%",
-          height: "90%",
+          width: "86%",
+          height: "70%",
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           justifyContent: "space-between",
           zIndex: 2,
         }}>
-          <Typography variant="h5">{post.title}</Typography>
-          <Typography variant="body1">{post.date}</Typography>
+          <Typography variant="h3" color="#fff">{post.title}</Typography>
+          <Typography variant="body1" color="#fff">{post.created}</Typography>
         </Stack>
       {/* </Box> */}
     </Card>
