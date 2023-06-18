@@ -139,11 +139,11 @@ const Index = (props) => {
       </Show>
       
       
-      <For each={[1,2,3,4,5,6,7,8,9,10]}>{(item) => (
+      {/* <For each={[1,2,3,4,5,6,7,8,9,10]}>{(item) => (
         <Grid item xs={12} paddingY={2} backgroundColor={getRandomColorHex()}>
           <Typography variant="h1">Test {item}</Typography>
         </Grid>
-      )}</For>
+      )}</For> */}
 
       <Contact/>
 
