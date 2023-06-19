@@ -45,19 +45,17 @@ export default function App() {
   
   return (
     <ThemeProvider theme={mainTheme}>
-      <div class="App">
-        <ViewContainer>
-          <Routes>
-            <Route path="/" component={Index} />
-            <Route path='/features' component={Features} />
-            {/* <Route path='/pricing' component={Pricing} /> */}
-            <Route path='/blog' component={Blog} />
-            <Route path='/blog/:slug' component={BlogPost} />
-            <Route path='/contact' component={Contact} />
-            <Route path='/*' component={NotFound} />
-          </Routes>
-        </ViewContainer>
-      </div>
+      <ViewContainer>
+        <Routes>
+          <Route path="/" component={Index} />
+          <Route path='/features' component={Features} />
+          {/* <Route path='/pricing' component={Pricing} /> */}
+          <Route path='/blog' component={Blog} />
+          <Route path='/blog/:slug' component={BlogPost} />
+          <Route path='/contact' component={Contact} />
+          <Route path='/*' component={NotFound} />
+        </Routes>
+      </ViewContainer>
     </ThemeProvider>
   );
 }

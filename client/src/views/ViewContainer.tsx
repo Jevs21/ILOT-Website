@@ -7,11 +7,11 @@ import HeaderEl from "../elements/RouteHeader";
 const ViewContainer = (props) => {
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid container item xs={12} sx={{overflowX: 'hidden'}}>
         <AppBar/>
       </Grid>
 
-      <Grid item container xs={12} paddingTop={style.appbar.height}>
+      <Grid item container xs={12} paddingTop={style.appbar.height} sx={{overflowX: 'hidden'}}>
         <HeaderEl />
         
         {props.children}

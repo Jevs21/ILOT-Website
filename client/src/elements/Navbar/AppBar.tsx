@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import { Close, Menu } from "@suid/icons-material";
-import { Box, Divider, Drawer, IconButton, Stack, Typography } from "@suid/material";
+import { Box, Divider, Drawer, Grid, IconButton, Stack, Typography } from "@suid/material";
 import { createMemo, createSignal, For, lazy, Show } from "solid-js";
 import logo from "../../assets/ILOTLogo.png";
 import StackRowCentered from "../../elements/StackRowCentered";
@@ -9,36 +9,34 @@ import style from "../../global/style";
 // import NavigationOptions from "./NavigationOptions";
 // const logo = lazy(() => import("../../assets/ILOTLogo.png"));
 import NavigationOptions from "./NavigationOptions";
+import IndexSectionContainer from "../IndexSections/IndexSectionContainer";
 
 const LogoAppbar = lazy(() => import("../../elements/Logo/LogoAppbar"));
 
 const AppBarDesktop = (props) => {
   const { navigate } = useGlobalContext();
-  const logoStyle = {
-    objectFit: 'contain',
-    height: '100%',
-  }
 
   return (
-    <>
-      <LogoAppbar onClick={() => navigate('/')}/>
-      <StackRowCentered width="100%" paddingX={2}>
-        <For each={NavigationOptions}>{(item) => (
-          <A href={item.href}>
-            <StackRowCentered>
-              {item.icon()}
-              <Typography 
-                align="left"
-                paddingRight={3} 
-                color={style.palette.white}>
-                  {item.text.toLocaleUpperCase()}
-              </Typography>
-            </StackRowCentered>
-          </A>
-        )}</For>
-      </StackRowCentered>
-    </>
-  );
+    <IndexSectionContainer>
+      <StackRowCentered>
+          <LogoAppbar onClick={() => navigate('/')}/>
+
+          <For each={NavigationOptions}>{(item) => (
+            <A href={item.href}>
+              <StackRowCentered>
+                {item.icon()}
+                <Typography 
+                  align="left"
+                  paddingRight={3} 
+                  color={style.palette.white}>
+                    {item.text.toLocaleUpperCase()}
+                </Typography>
+              </StackRowCentered>
+            </A>
+          )}</For>
+        </StackRowCentered>
+    </IndexSectionContainer>
+  )
 };
 
 const AppBarMobile = (props) => {
@@ -97,7 +95,12 @@ const AppBar = (props) => {
   const {isMobile} = useGlobalContext();
 
   return (
-    <StackRowCentered position="fixed" zIndex={9999} justifyContent="space-between" sx={{...style.appbar}}>
+    <StackRowCentered 
+      position="fixed" 
+      zIndex={9999} 
+      px={isMobile() ? 2 : 0}
+      justifyContent="space-between" 
+      sx={{...style.appbar}}>
       <Show 
         when={isMobile()}
         fallback={<AppBarDesktop/>}>
@@ -105,6 +108,7 @@ const AppBar = (props) => {
       </Show>
     </StackRowCentered>
   );
+  
 };
 
 export default AppBar;

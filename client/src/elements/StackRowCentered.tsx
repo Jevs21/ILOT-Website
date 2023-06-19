@@ -9,7 +9,7 @@ const StackRowCentered = (props) => {
   return (
     <Stack 
       direction='row' 
-      width='100%' 
+      width={'100%'} 
       // justifyContent={props.justifyContent}
       // paddingLeft={props.paddingLeft} 
       // paddingRight={props.paddingRight}
