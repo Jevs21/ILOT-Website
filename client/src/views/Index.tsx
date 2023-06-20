@@ -4,6 +4,7 @@ import IndexLanding from "../elements/IndexSections/IndexLanding";
 import IndexFeatures from "../elements/IndexSections/IndexFeatures";
 import { Box } from "@suid/material";
 import TestSVG from "../assets/TestSVG";
+import IndexBlog from "../elements/IndexSections/IndexBlog";
 const Contact = lazy(() => import("./Contact"));
 
 const Index = () => {
@@ -24,9 +25,7 @@ const Index = () => {
     <>
       <IndexLanding scrollPos={scrollPosition()}/>
       <IndexFeatures/>
-      <For each={[1,2,3,4,5,6,7,8,9,10]}>{(item) => (
-        <Box height={200} width={"100%"} sx={{backgroundColor: '#E2E2E2'}}>{item}</Box>
-      )}</For>
+      <IndexBlog/>
       <Contact/>
 
       

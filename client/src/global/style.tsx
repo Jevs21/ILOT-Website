@@ -4,7 +4,8 @@ const palette = {
   accent: "#FFD2D2",
   black: "#1C1B1F",
   white: "#FFFFFF",
-  bg: "#F0F0F0",
+  bg: "#F3F3F3",
+  transBg: "rgba(243, 243, 243, 0.8)",
   // grey: [
   //   "",
   //   "#CAC4D0",

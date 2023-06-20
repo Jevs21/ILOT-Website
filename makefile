@@ -1,7 +1,7 @@
 all: clean build run
 
 run:
-	cd server && php -S localhost:8080 -t public
+	cd server && php -S 10.0.0.110:8080 -t public
 
 build:
 	cd client && npm run build

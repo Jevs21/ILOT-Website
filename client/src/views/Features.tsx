@@ -5,6 +5,7 @@ import DemoStatusTrackerEl from "../elements/DemoStatusTrackerEl";
 import DemoTaskListEl from "../elements/DemoTaskListEl";
 import DemoMapEl from "../elements/DemoMapEl";
 import SectionHeaderEl from "../elements/SectionHeaderEl";
+import IndexSectionContainer from "../elements/IndexSections/IndexSectionContainer";
 
 
 const SectionText = (props) => (
@@ -24,9 +25,8 @@ const Features = () => {
     <>
       <SectionHeaderEl>Status Tracker</SectionHeaderEl>
 
-      <Grid item container xs={12}>
-        <Grid item xs={1}></Grid>
-        <Grid item container xs={10}>
+      
+        <IndexSectionContainer py={5}>
           <SectionText>
             Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
           </SectionText>
@@ -38,47 +38,34 @@ const Features = () => {
                 onChange={(id: number) => setSID(id)}/>
             </StackRowCentered>
           </Grid>
-        </Grid>
-        <Grid item xs={1}></Grid>
-      </Grid>
-
-      
+        </IndexSectionContainer>
+ 
 
       <SectionHeaderEl>Assignable Tasks</SectionHeaderEl>
-
-      <Grid item container xs={12}>
-        <Grid item xs={1}></Grid>
-        <Grid item container xs={10}>
-          <Grid item container lg={6}>
-            <StackRowCentered>
-              <DemoTaskListEl status_id={sID()}/>
-            </StackRowCentered>
-          </Grid>
-          <SectionText>
-            Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
-          </SectionText>
+      <IndexSectionContainer py={5}>
+        <Grid item container lg={6}>
+          <StackRowCentered>
+            <DemoTaskListEl status_id={sID()}/>
+          </StackRowCentered>
         </Grid>
-        <Grid item xs={1}></Grid>
-      </Grid>
+        <SectionText>
+          Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
+        </SectionText>
+      </IndexSectionContainer>
 
 
       <SectionHeaderEl>Vehicle Location Pin</SectionHeaderEl>
+      <IndexSectionContainer py={5}>
+        <SectionText>
+          Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
+        </SectionText>
 
-      <Grid item container xs={12}>
-        <Grid item xs={1}></Grid>
-        <Grid item container xs={10}>
-          <SectionText>
-            Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
-          </SectionText>
-
-          <Grid item container lg={6}>
-            <StackRowCentered>
-              <DemoMapEl/>
-            </StackRowCentered>
-          </Grid>
+        <Grid item container lg={6}>
+          <StackRowCentered>
+            <DemoMapEl/>
+          </StackRowCentered>
         </Grid>
-        <Grid item xs={1}></Grid>
-      </Grid>
+      </IndexSectionContainer>
     </>
   );
 };
