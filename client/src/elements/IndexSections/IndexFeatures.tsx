@@ -5,6 +5,7 @@ import DemoStatusTrackerEl from "../DemoStatusTrackerEl";
 import { createSignal } from "solid-js";
 import IndexSectionContainer from "./IndexSectionContainer";
 import { useGlobalContext } from "../../global/store";
+import style from "../../global/style";
 
 const IndexFeatures = () => {
   const { navigate } = useGlobalContext();
@@ -12,7 +13,7 @@ const IndexFeatures = () => {
   const [sKeys, setSKeys] = createSignal(["Arrival", "Prep", "Media", "Website", "Sold", "Delivered"]);
 
   return (
-    <IndexSectionContainer>
+    <IndexSectionContainer backgroundColor={style.palette.white}>
       {/* <Grid item container xs={12} paddingBottom={2}>
         <StackRowCentered><DisplayText align='center'>Features</DisplayText></StackRowCentered>
       </Grid> */}

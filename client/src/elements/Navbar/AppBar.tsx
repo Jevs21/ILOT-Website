@@ -10,6 +10,7 @@ import style from "../../global/style";
 // const logo = lazy(() => import("../../assets/ILOTLogo.png"));
 import NavigationOptions from "./NavigationOptions";
 import IndexSectionContainer from "../IndexSections/IndexSectionContainer";
+import CustomButton from "./CustomButton";
 
 const LogoAppbar = lazy(() => import("../../elements/Logo/LogoAppbar"));
 
@@ -18,22 +19,26 @@ const AppBarDesktop = (props) => {
 
   return (
     <IndexSectionContainer>
-      <StackRowCentered>
-          <LogoAppbar onClick={() => navigate('/')}/>
+      <StackRowCentered justifyContent="space-between">
+          <StackRowCentered>
+            <LogoAppbar onClick={() => navigate('/')}/>
 
-          <For each={NavigationOptions}>{(item) => (
-            <A href={item.href}>
-              <StackRowCentered>
-                {item.icon()}
-                <Typography 
-                  align="left"
-                  paddingRight={3} 
-                  color={style.palette.white}>
-                    {item.text.toLocaleUpperCase()}
-                </Typography>
-              </StackRowCentered>
-            </A>
-          )}</For>
+            <For each={NavigationOptions}>{(item) => (
+              <A href={item.href}>
+                <StackRowCentered>
+                  {item.icon()}
+                  <Typography 
+                    align="left"
+                    paddingRight={3} 
+                    color={style.palette.white}>
+                      {item.text.toLocaleUpperCase()}
+                  </Typography>
+                </StackRowCentered>
+              </A>
+            )}</For>
+          </StackRowCentered>
+          
+          <CustomButton text="Request a Demo" type="red"/>
         </StackRowCentered>
     </IndexSectionContainer>
   )
