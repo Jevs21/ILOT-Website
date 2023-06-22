@@ -4,12 +4,16 @@ import style from "../../global/style"
 
 interface CustomButtonProps {
   type?: "red" | "white" | "black"
+  onClick: () => void
   text: string
 }
 
-const CustomButton = ({type, text}: CustomButtonProps) => {
+const CustomButton = ({type, onClick, text}: CustomButtonProps) => {
   const baseStyle = {
     width: 200,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   }
 
   const btnStyle = createMemo(() => {
@@ -18,19 +22,31 @@ const CustomButton = ({type, text}: CustomButtonProps) => {
         return {
           ...baseStyle,
           backgroundColor: style.palette.red,
-          color: "white"
+          color: style.palette.white,
+          '&:hover': {
+            backgroundColor: style.palette.redDark,
+            cursor: 'pointer'
+          },
         }
       case "white":
         return {
           ...baseStyle,
-          backgroundColor: "white",
-          color: "black"
+          backgroundColor: style.palette.white,
+          color: style.palette.black,
+          '&:hover': {
+            backgroundColor: style.palette.grey[0],
+            cursor: 'pointer'
+          },
         }
       case "black":
         return {
           ...baseStyle,
-          backgroundColor: "black",
-          color: "white"
+          backgroundColor: style.palette.black,
+          color: style.palette.white,
+          '&:hover': {
+            backgroundColor: style.palette.grey[3],
+            cursor: 'pointer'
+          },
         }
       default:
         return baseStyle
@@ -38,7 +54,10 @@ const CustomButton = ({type, text}: CustomButtonProps) => {
   })
 
   return (
-    <Button variant="contained" sx={btnStyle()}>{text}</Button>
+    <Button 
+      variant="contained" 
+      onClick={onClick}
+      sx={btnStyle()}>{text}</Button>
   );
 }
 

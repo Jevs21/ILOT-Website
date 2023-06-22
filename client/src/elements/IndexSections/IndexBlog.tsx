@@ -4,27 +4,26 @@ import StackRowCentered from "../StackRowCentered";
 import IndexSectionContainer from "./IndexSectionContainer";
 import style from "../../global/style";
 import IndexBlogRecents from "./IndexBlogRecents";
+import CustomButton from "../Navbar/CustomButton";
+import CustomChip from "../CustomChip";
 
 const IndexBlog = () => {
   const { navigate } = useGlobalContext();
   return (
     <IndexSectionContainer backgroundColor={style.palette.black}>
-      <Grid item container xs={12} paddingBottom={2}>
-        <Typography variant="h5" color={style.palette.white}>
-          Stay updated with the latest insights, industry trends, and updates from our team. 
-          Our blog brings you the wealth of knowledge we've acquired from years of research and application.
+      <Grid item container xs={12} lg={4} paddingBottom={2}>
+        <CustomChip type="white" text="Blog" />
+        <Typography variant="h1" py={2} color={style.palette.white}>
+          Stay up to date
         </Typography>
+        <Typography variant="h5" py={2} color={style.palette.white}>
+          With the latest insights, industry trends, and updates from our team. 
+        </Typography>
+        <CustomButton type="red" text="Read the Blog" onClick={() => navigate('/blog')} />
         {/* <StackRowCentered><DisplayText align='center'>Blog</DisplayText></StackRowCentered> */}
       </Grid>
-      <IndexBlogRecents />
-      <Grid item container xs={12} paddingTop={2}>
-        <StackRowCentered justifyContent="center">
-          <Button variant="contained" onClick={() => navigate('/blog')} sx={{
-            width: '50%',
-            backgroundColor: style.palette.white,
-            color: style.palette.black
-          }}>Read the Blog</Button>
-        </StackRowCentered>
+      <Grid item container xs={12} lg={8} paddingTop={2}>
+        <IndexBlogRecents />
       </Grid>
     </IndexSectionContainer>
   );

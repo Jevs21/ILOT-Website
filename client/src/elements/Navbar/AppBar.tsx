@@ -38,7 +38,16 @@ const AppBarDesktop = (props) => {
             )}</For>
           </StackRowCentered>
           
-          <CustomButton text="Request a Demo" type="red"/>
+          <CustomButton 
+            type="red"
+            text="Request a Demo" 
+            onClick={() => navigate('/contact')}/>
+          <CustomButton 
+            type="white"
+            text="Launch ILOT" 
+            onClick={() => {
+              open('https://ilot-app-ere9y.ondigitalocean.app/', '_blank')
+            }}/>
         </StackRowCentered>
     </IndexSectionContainer>
   )

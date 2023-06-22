@@ -4,6 +4,8 @@ import { Show, createSignal, lazy } from "solid-js";
 import { Alert, Button, Divider, Fade, FormControl, Grid, Stack, TextField, Typography } from "@suid/material";
 import StackRowCentered from "../elements/StackRowCentered";
 import IndexSectionContainer from "../elements/IndexSections/IndexSectionContainer";
+import DisplayText from "../elements/DisplayText";
+import CustomChip from "../elements/CustomChip";
 const AboutIcon = lazy(() => import("@suid/icons-material/People"));
 
 const Contact = () => {
@@ -66,13 +68,19 @@ const Contact = () => {
     // <Grid item container xs={12}>
     //   <Grid item xs={1} md={2} lg={3}></Grid>
     //   <Grid item container xs={10} md={8} lg={6}>
-    <IndexSectionContainer py={10}>
-      <Stack py={4} spacing={3} alignItems="center" width={'100%'}>
-        <Typography variant="h5" align="justify">
-        Looking to transform your dealership operations with ILOT? 
-        We'd love to hear from you. Let us help you enhance your efficiency, performance, and profitability.
-        </Typography>
-        <Divider />
+    <IndexSectionContainer>
+      <Grid item container xs={12} py={2}>
+        <CustomChip text="Request a Demo" type="black" />
+      </Grid>
+      <Grid item container xs={12} lg={5}>
+        <Stack spacing={4}>
+          <Typography variant="h1">Looking to transform your dealership's operations?</Typography>
+          <Typography variant="h5">
+            Let us help you enhance your efficiency, performance, and profitability.
+          </Typography>
+        </Stack>
+      </Grid>
+      <Grid item container xs={12} lg={7} py={2}>
         <FormControl fullWidth>
           <form onSubmit={handleSubmit}>
             <Stack spacing={2}>
@@ -90,14 +98,16 @@ const Contact = () => {
               </StackRowCentered>
               <TextField label="Position" name="position" variant="outlined" fullWidth required onChange={handleInputChange}/>
               <TextField label="Message" name="message" variant="outlined" multiline rows={4} fullWidth required onChange={handleInputChange}/>
-              <Button variant="contained" color="primary" type="submit">Submit</Button>
+              <StackRowCentered py={1} maxWidth={300}>
+                <Button variant="contained" color="primary" type="submit">Submit</Button>
+              </StackRowCentered>
               <Fade in={hasSubmitted() && feedbackMsg().length > 0}>
                 <Alert severity={(error()) ? "error" : "success"} >{feedbackMsg()}</Alert>
               </Fade>
             </Stack>
           </form>
         </FormControl>
-      </Stack>
+      </Grid>
     </IndexSectionContainer>
     //   </Grid>
     //   <Grid item xs={1} md={2} lg={3}></Grid>
