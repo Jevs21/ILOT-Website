@@ -21,8 +21,11 @@ const IndexBlogRecents = () => {
     }
   }
 
-  const curList = createMemo(() => {
-    return blogList().slice(0,(isMobile() ? 1 : 2))
+  const recentPost = createMemo(() => {
+    if (blogList().length > 0) {
+      return blogList().slice(0,1)[0]
+    }
+    return null;
   });
 
   onMount(async () => {
@@ -31,11 +34,7 @@ const IndexBlogRecents = () => {
 
   return (
     <Grid container item xs={12} my={3} spacing={6} justifyContent="space-evenly">
-      {curList().map((post) => (
-        <Grid container item xs={12} md={6} lg={4} justifyContent="center">
-          <BlogListItem post={post} />
-        </Grid>
-      ))}
+      {recentPost() && <BlogListItem post={recentPost()} />}
     </Grid>
   );
 };
