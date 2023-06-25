@@ -28,7 +28,7 @@ const BlogListItem = (props) => {
         right: 0,
         bottom: 0,
         left: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.6)', // black with 50% transparency
+        backgroundColor: 'rgba(0, 0, 0, 0.6)', // black with 60% transparency
         zIndex: 1,
       }}/>
 
