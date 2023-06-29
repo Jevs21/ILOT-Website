@@ -20,9 +20,6 @@ var titles = [
   "The Impact of E-commerce on the Car Dealership Industry",
   "Dealing with Disruptions: How Car Dealerships Can Thrive Amid Change",
   "Adapting to Electric Cars: Opportunities and Challenges for Dealerships",
-  "Strategies to Improve Profit Margins in Car Dealerships",
-  "Creating a Successful Online Presence for Your Car Dealership",
-  "Key Performance Indicators (KPIs) for Successful Car Dealerships"
 ];
 
 const BlogList = () => {
