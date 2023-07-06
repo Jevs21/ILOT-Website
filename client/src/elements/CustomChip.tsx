@@ -5,9 +5,10 @@ import { createMemo } from "solid-js";
 interface CustomChipProps {
   type: "black" | "white" | "grey"
   text: string
+  size?: "small" | "medium" | "large"
 }
 
-const CustomChip = ({type, text}: CustomChipProps) => {
+const CustomChip = ({type, text, size}: CustomChipProps) => {
   const chipStyle = createMemo(() => {
     switch (type) {
       case "black":
@@ -29,7 +30,7 @@ const CustomChip = ({type, text}: CustomChipProps) => {
   });
 
   return (
-    <Chip label={text.toLocaleUpperCase()} sx={chipStyle()}/>
+    <Chip label={text} sx={[chipStyle(), {p: 2, fontSize: '1.1em'}]}/>
   );
 }
 

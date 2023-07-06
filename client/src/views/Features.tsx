@@ -4,17 +4,17 @@ import { createSignal } from "solid-js";
 import DemoStatusTrackerEl from "../elements/DemoStatusTrackerEl";
 import DemoTaskListEl from "../elements/DemoTaskListEl";
 import DemoMapEl from "../elements/DemoMapEl";
-import SectionHeaderEl from "../elements/SectionHeaderEl";
 import IndexSectionContainer from "../elements/IndexSections/IndexSectionContainer";
+import CustomChip from "../elements/CustomChip";
 
 
 const SectionText = (props) => (
-  <Grid item container lg={6}>
-    <StackRowCentered>
-      <Typography variant="h2" p={2} lineHeight={1.3}>
+  <Grid item container lg={6} px={1} justifyContent="flex-start">
+    {/* <StackRowCentered > */}
+      <Typography variant="h2" lineHeight={1.3}>
         {props.children}
       </Typography>
-    </StackRowCentered>
+    {/* </StackRowCentered> */}
   </Grid>
 );
 
@@ -23,12 +23,16 @@ const Features = () => {
   const [sKeys, setSKeys] = createSignal(["Arrival", "Prep", "Media", "Website", "Sold", "Delivered"]);
   return (
     <>
-      <SectionHeaderEl>Status Tracker</SectionHeaderEl>
+      {/* <SectionHeaderEl>Status Tracker</SectionHeaderEl> */}
 
-      
-        <IndexSectionContainer py={5}>
+        <IndexSectionContainer>
+          <Grid item container xs={12} paddingBottom={4}>
+            <StackRowCentered>
+              <CustomChip type="black" text="Customizable Status Tracker" />
+            </StackRowCentered>
+          </Grid>
           <SectionText>
-            Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
+            Stay informed at every stage of the vehicle's journey with your very own customizable tracker.          
           </SectionText>
           <Grid item container lg={6}>
             <StackRowCentered>
@@ -38,34 +42,38 @@ const Features = () => {
                 onChange={(id: number) => setSID(id)}/>
             </StackRowCentered>
           </Grid>
+
+          <Grid item container xs={12} py={4} > 
+            <StackRowCentered justifyContent="flex-end">
+              <CustomChip type="black" text="Assignable Vehicle Tasks" />
+            </StackRowCentered>
+          </Grid>
+          <Grid item container lg={6}>
+            <StackRowCentered>
+              <DemoTaskListEl status_id={sID()}/>
+            </StackRowCentered>
+          </Grid>
+          <SectionText>
+            Keeps things organized and maximize productivity by keeping on top of specific assignable vehicle tasks.
+          </SectionText>
+
+
+          <Grid item container xs={12} py={4}>
+            <StackRowCentered>
+              <CustomChip type="black" text="Vehicle Location Pin" />
+            </StackRowCentered>
+          </Grid>
+          <SectionText>
+            Easily track and locate vehicles within your inventory using our intuitive vehicle location pin feature.
+          </SectionText>
+
+          <Grid item container lg={6}>
+            <StackRowCentered>
+              <DemoMapEl/>
+            </StackRowCentered>
+          </Grid>
         </IndexSectionContainer>
- 
 
-      <SectionHeaderEl>Assignable Tasks</SectionHeaderEl>
-      <IndexSectionContainer py={5}>
-        <Grid item container lg={6}>
-          <StackRowCentered>
-            <DemoTaskListEl status_id={sID()}/>
-          </StackRowCentered>
-        </Grid>
-        <SectionText>
-          Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
-        </SectionText>
-      </IndexSectionContainer>
-
-
-      <SectionHeaderEl>Vehicle Location Pin</SectionHeaderEl>
-      <IndexSectionContainer py={5}>
-        <SectionText>
-          Every dealership is different - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vel lacinia sollicitudin, nisl magna euismod dui, nec faucibus nisi purus sit amet lorem. Sed at enim nec nibh semper volutpat. Duis finibus convallis pharetra. Aenean ultricies lectus sed enim varius, at sodales elit feugiat.
-        </SectionText>
-
-        <Grid item container lg={6}>
-          <StackRowCentered>
-            <DemoMapEl/>
-          </StackRowCentered>
-        </Grid>
-      </IndexSectionContainer>
     </>
   );
 };
