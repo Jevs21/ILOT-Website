@@ -9,7 +9,7 @@ import CustomChip from "../elements/CustomChip";
 
 
 const SectionText = (props) => (
-  <Grid item container lg={6} px={1} justifyContent="flex-start">
+  <Grid item container lg={6} px={2} justifyContent="flex-start">
     {/* <StackRowCentered > */}
       <Typography variant="h2" lineHeight={1.3}>
         {props.children}
@@ -17,6 +17,26 @@ const SectionText = (props) => (
     {/* </StackRowCentered> */}
   </Grid>
 );
+
+const HeaderContainer = (props) => (
+  <Grid item container xs={12} {...props}>
+    <StackRowCentered justifyContent={props.justifyContent || 'flex-start'}>
+      { props.children }
+    </StackRowCentered>
+  </Grid>
+);
+
+const FeatureContainer = (props) => (
+  <Grid item container lg={6} px={2}>
+    <StackRowCentered>
+      { props.children }
+    </StackRowCentered>
+  </Grid>
+);
+
+
+
+
 
 const Features = () => {
   const [sID, setSID] = createSignal(0);
@@ -26,52 +46,41 @@ const Features = () => {
       {/* <SectionHeaderEl>Status Tracker</SectionHeaderEl> */}
 
         <IndexSectionContainer>
-          <Grid item container xs={12} paddingBottom={4}>
-            <StackRowCentered>
-              <CustomChip type="black" text="Customizable Status Tracker" />
-            </StackRowCentered>
-          </Grid>
+          <HeaderContainer paddingBottom={6}>
+            <CustomChip type="black" text="Customizable Status Tracker" />
+          </HeaderContainer>
           <SectionText>
             Stay informed at every stage of the vehicle's journey with your very own customizable tracker.          
           </SectionText>
-          <Grid item container lg={6}>
-            <StackRowCentered>
-              <DemoStatusTrackerEl 
-                status_id={sID()} 
-                status_keys={sKeys()}
-                onChange={(id: number) => setSID(id)}/>
-            </StackRowCentered>
-          </Grid>
+          <FeatureContainer>
+            <DemoStatusTrackerEl 
+              status_id={sID()} 
+              status_keys={sKeys()}
+              onChange={(id: number) => setSID(id)}/>
+          </FeatureContainer>
 
-          <Grid item container xs={12} py={4} > 
+          <HeaderContainer py={6} paddingTop={8} justifyContent={"flex-end"}> 
             <StackRowCentered justifyContent="flex-end">
               <CustomChip type="black" text="Assignable Vehicle Tasks" />
             </StackRowCentered>
-          </Grid>
-          <Grid item container lg={6}>
-            <StackRowCentered>
+          </HeaderContainer>
+          <FeatureContainer>
               <DemoTaskListEl status_id={sID()}/>
-            </StackRowCentered>
-          </Grid>
+            </FeatureContainer>
           <SectionText>
             Keeps things organized and maximize productivity by keeping on top of specific assignable vehicle tasks.
           </SectionText>
 
-
-          <Grid item container xs={12} py={4}>
-            <StackRowCentered>
+          <HeaderContainer py={6} paddingTop={8}>
               <CustomChip type="black" text="Vehicle Location Pin" />
-            </StackRowCentered>
-          </Grid>
+          </HeaderContainer>
           <SectionText>
             Easily track and locate vehicles within your inventory using our intuitive vehicle location pin feature.
           </SectionText>
 
-          <Grid item container lg={6}>
-            <StackRowCentered>
+          <FeatureContainer>
               <DemoMapEl/>
-            </StackRowCentered>
-          </Grid>
+          </FeatureContainer>
         </IndexSectionContainer>
 
     </>
