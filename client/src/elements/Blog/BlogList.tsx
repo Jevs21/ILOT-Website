@@ -3,6 +3,7 @@ import BlogPostData from "../../models/BlogPostData";
 import BlogListItem from "./BlogListItem";
 import { createMemo, createSignal, onMount } from "solid-js";
 
+// TODO Replace with db posts
 var titles = [
   "The Future of Car Dealerships: Trends and Predictions",
   "Exploring the Benefits of Digital Transformation in Car Dealerships",
