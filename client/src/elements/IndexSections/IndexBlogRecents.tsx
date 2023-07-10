@@ -33,7 +33,7 @@ const IndexBlogRecents = () => {
   });
 
   return (
-    <Grid container item xs={12} my={3} spacing={6} justifyContent="space-evenly">
+    <Grid container item xs={12} my={3} px={5}>
       {recentPost() && <BlogListItem post={recentPost()} />}
     </Grid>
   );

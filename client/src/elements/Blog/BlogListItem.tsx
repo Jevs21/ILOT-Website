@@ -10,9 +10,10 @@ const BlogListItem = (props) => {
       onClick={() => navigate(`/blog/${post.slug}`)}
       sx={{
         position: 'relative', // required for the pseudo-element to position correctly
-        width: 275,
+        // width: 275,
+        width: "100%",
         // minWidth: 200,
-        minHeight: 200,
+        minHeight: 330,
         backgroundImage: `url('${post.thumbnail_url}')`,
         backgroundPosition: 'center', // centers the background image
         backgroundSize: 'cover', // ensure the image covers the whole area
@@ -28,22 +29,22 @@ const BlogListItem = (props) => {
         right: 0,
         bottom: 0,
         left: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.6)', // black with 60% transparency
+        background: 'linear-gradient(to top, rgba(0, 0, 0, 0.9) 25%, rgba(0, 0, 0, 0))',
         zIndex: 1,
       }}/>
 
-        <Stack sx={{
+        <Stack spacing={2} sx={{
           position: 'absolute',
           width: "86%",
           height: "70%",
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           zIndex: 2,
         }}>
+          <Typography variant="body1" color="#fff">{post.created} - {post.min_read} min read.</Typography>
           <Typography variant="h3" color="#fff">{post.title}</Typography>
-          <Typography variant="body1" color="#fff">{post.created}</Typography>
         </Stack>
       {/* </Box> */}
     </Card>

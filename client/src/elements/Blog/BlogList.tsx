@@ -70,7 +70,7 @@ const BlogList = () => {
   return (
     <Grid container my={5} spacing={6} justifyContent="space-evenly">
       {curList().map((post) => (
-        <Grid container item xs={12} md={6} lg={4} justifyContent="center">
+        <Grid container item xs={12} lg={6} justifyContent="center">
           <BlogListItem post={post} />
         </Grid>
       ))}
