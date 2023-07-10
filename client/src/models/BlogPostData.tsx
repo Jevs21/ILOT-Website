@@ -2,6 +2,7 @@ interface BlogPostData {
   id: number;
   title: string;
   content: string;
+  min_read: number;
   slug: string;
   created: string;
   updated: string;

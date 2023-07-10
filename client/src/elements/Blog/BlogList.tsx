@@ -24,7 +24,7 @@ var titles = [
 ];
 
 const BlogList = () => {
-  const listN = 8;
+  const listN = 4;
   const [pageNum, setPageNum] = createSignal(1);
   const [blogList, setBlogList] = createSignal([]);
   
@@ -55,7 +55,11 @@ const BlogList = () => {
     console.log(res);
     if (res && res.data) {
       console.log(res.data);
-      setBlogList(res.data);
+      // sort by .created
+      const sorted = res.data.sort((a: BlogPostData, b: BlogPostData) => {
+        return new Date(b.created).getTime() - new Date(a.created).getTime();
+      });
+      setBlogList(sorted);
     }
   }
 

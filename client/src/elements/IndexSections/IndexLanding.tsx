@@ -81,8 +81,10 @@ const LandingDesktop = (props) => {
           style={{
             position: 'absolute',
             top: '55%',
-            left: leftPos(),
-            transform: transform(),
+            // left: leftPos(),
+            left: '75%',
+            transform: 'translate(-50%, -50%)',
+            // transform: transform(),
             zIndex: 1
           }}/>
       </Grid>

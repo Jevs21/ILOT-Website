@@ -44,12 +44,22 @@ import { createEffect, onMount } from 'solid-js';
 // leaflet only works if you start doing stuff after the page properly exists (has rendered?)
 // so we render the map and create our effects inside onMount() so they won't exist until the page does
 export default function DemoMapEl(props?: any) {
+  const possible_coords = [
+    [43.71396220726016, -79.5930360478396], // Woodbine toyota
+    [44.4061869354414, -79.70377021528682], // Bayfield ford lincoln
+    [44.376693747773196, -79.71297198794062],
+    [43.52977904293927, -79.88582606416367],
+    [43.52652206707601, -79.86976489334047],
+    [43.54061234991195, -80.31248296878242],
+    [44.03984401261156, -79.46244830380338],
+  ];
   let container;
   // Leaflet initialization has to happen inside onMount or it won't work
   onMount(() => {
+    const randCoord = possible_coords[Math.floor(Math.random() * possible_coords.length)];
     const map = L.map('make-a-map', {
       zoomControl: false,
-    }).setView([43.71396220726016, -79.5930360478396], 24);
+    }).setView(randCoord, 24);
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
@@ -62,11 +72,11 @@ export default function DemoMapEl(props?: any) {
     }).addTo(map);
     
     // add a single marker to a layer. note it's in an array
-    let markerLayer = L.layerGroup([
-      L.marker([43.71396220726016, -79.5930360478396])
-      .bindPopup('Red Honda Civic')
-      .openPopup()
-    ]);
+    // let markerLayer = L.layerGroup([
+    //   L.marker([43.71396220726016, -79.5930360478396])
+    //   .bindPopup('Red Honda Civic')
+    //   .openPopup()
+    // ]);
 
     // container.addEventListener('mouseover', () => {
     //   ')
@@ -74,7 +84,7 @@ export default function DemoMapEl(props?: any) {
     // reactive effect to add or remove the marker based on our reactive prop
     createEffect (() => {
       console.log("effect fired");
-      map.addLayer(markerLayer);
+      // map.addLayer(markerLayer);
     });
   });
 

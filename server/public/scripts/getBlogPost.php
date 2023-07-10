@@ -8,7 +8,7 @@ require 'common/db_connection.php';
 // Check if slug is set
 if (isset($_GET['slug'])) {
     // Sanitize slug
-    $slug = filter_input(INPUT_GET, 'slug', FILTER_SANITIZE_STRING);
+    $slug = $_GET['slug'];
     
     // Prepare SQL statement
     $sql = "SELECT * FROM blog_posts WHERE slug = :slug";

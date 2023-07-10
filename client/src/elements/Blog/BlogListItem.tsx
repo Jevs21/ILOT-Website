@@ -5,6 +5,12 @@ import { useNavigate } from "@solidjs/router";
 const BlogListItem = (props) => {
   const post: any = props.post;
   const navigate = useNavigate();
+  const dateToString = (date) => {
+    // const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const d = new Date(date);
+
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
   return (
     <Card
       onClick={() => navigate(`/blog/${post.slug}`)}
@@ -43,7 +49,7 @@ const BlogListItem = (props) => {
           justifyContent: "flex-end",
           zIndex: 2,
         }}>
-          <Typography variant="body1" color="#fff">{post.created} - {post.min_read} min read.</Typography>
+          <Typography variant="body1" color="#fff">{dateToString(post.created)} - {post.min_read} min read.</Typography>
           <Typography variant="h3" color="#fff">{post.title}</Typography>
         </Stack>
       {/* </Box> */}

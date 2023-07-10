@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 require 'common/db_connection.php';
 
 // Prepare SQL statement
-$sql = "SELECT id, title, created, slug, thumbnail_url, min_read  FROM blog_posts ORDER BY created DESC";
+$sql = "SELECT id, title, created, slug, thumbnail_url, min_read  FROM blog_posts ORDER BY created ASC";
 $stmt = $conn->prepare($sql);
 
 $result = $stmt->execute();

@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import { Close, Menu } from "@suid/icons-material";
+import { Close, Launch, Menu } from "@suid/icons-material";
 import { Box, Divider, Drawer, Grid, IconButton, Stack, Typography } from "@suid/material";
 import { createMemo, createSignal, For, lazy, Show } from "solid-js";
 import logo from "../../assets/ILOTLogo.png";
@@ -74,6 +74,11 @@ const AppBarMobile = (props) => {
 const AppBarMobileDrawer = (props) => {
   const { navigate } = useGlobalContext();
   const followLink = (href) => {
+    if (href.startsWith('http')) {
+      open(href, '_blank');
+      props.onClose();
+      return;
+    }
     navigate(href);
     props.onClose();
   }
@@ -100,6 +105,18 @@ const AppBarMobileDrawer = (props) => {
         <For each={NavigationOptions}>{(item) =>
           <MobileDrawerOption item={item}/>
         }</For>
+        <Divider sx={{py: 4, background: 'transparent'}}/>
+        <MobileDrawerOption item={{
+          href: 'https://ilot-app-ere9y.ondigitalocean.app/',
+          text: 'Launch ILOT',
+          mobile_icon: () => <Launch sx={{
+            paddingLeft: 3,
+            color: style.palette.black,
+            '&:hover': {
+              color: style.palette.accent,
+            }
+          }}/>,
+        }}/>
       </Stack>
     </Drawer>
   );

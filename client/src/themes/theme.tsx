@@ -20,7 +20,7 @@ const mainTheme = createTheme({
     fontFamily: 'Work Sans, Roboto, Helvetica, Arial, sans-serif',
     h1: { 
       // Key Metrics Large
-      fontSize: "54px",
+      fontSize: "50px",
       fontWeight: 500,
       lineHeight: "63px",
       letterSpacing: "0em",
