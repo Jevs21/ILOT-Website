@@ -42,9 +42,13 @@ if (
     $stmt->bindValue(8, $message, SQLITE3_TEXT);
 
     if ($stmt->execute()) {
-        send_email($data);
+        $emailStatus = send_email($data);
 
-        echo json_encode(['success' => true]);
+        if ($emailStatus['success']) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => $emailStatus['message']]);
+        }
     } else {
         echo json_encode(['success' => false, 'error' => $conn->lastErrorMsg()]);
     }
