@@ -1,8 +1,10 @@
 import { Typography } from "@suid/material";
+import { useGlobalContext } from "../global/store";
 
 const DisplayText = (props) => {
+  const {isMobile} = useGlobalContext();
   return (
-    <Typography {...props} variant="h1" fontSize={"4.3em"} lineHeight={1.3}>
+    <Typography {...props} variant="h1" fontSize={(isMobile()) ? "3em" : "4.2em"} lineHeight={1.3}>
       {props.children}
     </Typography>
   );

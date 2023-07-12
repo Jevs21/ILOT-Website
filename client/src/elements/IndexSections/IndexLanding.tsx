@@ -7,6 +7,7 @@ import DisplayText from "../DisplayText";
 import IndexSectionContainer from "./IndexSectionContainer";
 import style from "../../global/style";
 import CustomButton from "../Navbar/CustomButton";
+import CustomChip from "../CustomChip";
 
 const LandingMobile = (props) => {
   const {navigate} = useGlobalContext(); 
@@ -32,7 +33,7 @@ const LandingMobile = (props) => {
 }
 
 const LandingDesktop = (props) => {
-  const {navigate} = useGlobalContext();
+  const {navigate, isMobile} = useGlobalContext();
   const leftPos = createMemo(() => {
     let left = 75;
     if (props.scrollPos) {
@@ -51,10 +52,11 @@ const LandingDesktop = (props) => {
     <IndexSectionContainer>
       <Grid item container xs={12} md={8} lg={6}>
         <Card elevation={0} sx={{padding: 4, paddingLeft: 0, zIndex: 10, backgroundColor: style.palette.transBg}}>
-          <DisplayText paddingBottom={4} sx={{opacity: 1}}>
+          <CustomChip type="black" text="Introducing I-LOT"/>
+          <DisplayText paddingBottom={4} paddingTop={2} sx={{opacity: 1}}>
             Ditch the sticky notes and messy spreadsheets.
           </DisplayText>
-          <Typography variant="h5" py={4} sx={{opacity: 1}}>
+          <Typography variant="h5" py={2} paddingBottom={5} sx={{opacity: 1}}>
             Easily track your dealership's inventory so you can accelerate sales.
             {/* Welcome to a world where car inventory management is simplified. Welcome to ILOT - the powerhouse of dealership analytics. */}
           </Typography>
@@ -96,11 +98,12 @@ const IndexLanding = (props) => {
   const { isMobile } = useGlobalContext();
   
   return (
-    <Show 
-      when={isMobile()}
-      fallback={<LandingDesktop scrollPos={props.scrollPos}/>}>
-      <LandingMobile/>
-    </Show>
+    // <Show 
+    //   when={isMobile()}
+    //   fallback={<LandingDesktop scrollPos={props.scrollPos}/>}>
+    //   <LandingMobile/>
+    // </Show>
+    <LandingDesktop scrollPos={props.scrollPos}/>
   );
   
 }

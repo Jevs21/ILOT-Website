@@ -12,7 +12,9 @@ const IndexBlog = () => {
   return (
     <IndexSectionContainer backgroundColor={style.palette.black}>
       <Grid item container xs={12} lg={4} paddingBottom={2}>
-        <CustomChip type="white" text="Blog" />
+        <Grid item container xs={12}>
+          <CustomChip type="white" text="Blog" />
+        </Grid>
         <Typography variant="h1" py={2} color={style.palette.white}>
           Stay up to date
         </Typography>

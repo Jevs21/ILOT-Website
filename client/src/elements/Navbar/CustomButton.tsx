@@ -10,7 +10,9 @@ interface CustomButtonProps {
 
 const CustomButton = ({type, onClick, text}: CustomButtonProps) => {
   const baseStyle = {
-    width: 200,
+    // width: 200,
+    p: 1,
+    px: 2,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',

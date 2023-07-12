@@ -60,7 +60,7 @@ const AppBarMobile = (props) => {
     <>
       <LogoAppbar onClick={() => navigate('/')}/>
       <IconButton 
-        sx={{paddingRight: 2}}
+        sx={{paddingRight: 4}}
         onClick={() => setIsOpen(!isOpen())}>
           {isOpen() ? <Close fontSize="large" sx={{color: style.palette.white}}/> : <Menu fontSize="large" sx={{color: style.palette.white}}/>}
       </IconButton>
