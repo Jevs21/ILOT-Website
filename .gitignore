@@ -5,3 +5,4 @@ send_email.php
 .DS_Store
 vendor
 db.sqlite3
+PHPMailer
